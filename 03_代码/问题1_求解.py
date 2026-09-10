@@ -15,11 +15,11 @@ import pandas as pd
 from scipy.optimize import Bounds, LinearConstraint, milp
 from scipy.sparse import lil_matrix
 
-ROOT = Path(__file__).resolve().parent
-INPUT = ROOT / "problems&analysis" / "problems" / "C题" / "附件" / "附件1.xlsx"
-TEMPLATE = ROOT / "problems&analysis" / "problems" / "C题" / "附件" / "附件5" / "result1.xlsx"
-RESULTS = ROOT / "results"
-FIGURES = ROOT / "figures"
+ROOT = Path(__file__).resolve().parents[1]
+INPUT = ROOT / "01_题目与数据" / "原始附件" / "附件1.xlsx"
+TEMPLATE = ROOT / "01_题目与数据" / "原始附件" / "附件5" / "result1.xlsx"
+RESULTS = ROOT / "04_结果"
+FIGURES = ROOT / "05_图表"
 RESULTS.mkdir(exist_ok=True)
 FIGURES.mkdir(exist_ok=True)
 
@@ -234,7 +234,7 @@ def main():
     make_figures(df, out, metrics)
     manifest = {
         "generated_at": datetime.now().isoformat(), "python": sys.version, "platform": platform.platform(),
-        "command": "python 问题1_求解.py", "seed": None,
+        "command": "python 03_代码/问题1_求解.py", "seed": None,
         "inputs": {str(INPUT.relative_to(ROOT)): sha256(INPUT), str(TEMPLATE.relative_to(ROOT)): sha256(TEMPLATE)},
         "code_sha256": sha256(Path(__file__)),
         "outputs": {str(p.relative_to(ROOT)): sha256(p) for p in [RESULTS / "问题1_逐时段结果.csv", RESULTS / "问题1_四小时汇总.csv", RESULTS / "问题1_指标.csv", RESULTS / "result1_问题1_结果.xlsx"]},

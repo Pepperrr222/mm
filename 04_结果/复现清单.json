@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-09-10T22:03:49.860303",
+  "generated_at": "2026-09-10T22:21:26.130053",
   "python": "3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:48:34) [MSC v.1929 64 bit (AMD64)]",
   "platform": "Windows-11-10.0.26200-SP0",
-  "command": "python 问题1_求解.py",
+  "command": "python 03_代码/问题1_求解.py",
   "seed": null,
   "inputs": {
-    "problems&analysis\\problems\\C题\\附件\\附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
-    "problems&analysis\\problems\\C题\\附件\\附件5\\result1.xlsx": "28360e0974e7d6065394a8aba4e14a86773ae0036cc7d3ea1b211b515b03d688"
+    "01_题目与数据\\原始附件\\附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+    "01_题目与数据\\原始附件\\附件5\\result1.xlsx": "28360e0974e7d6065394a8aba4e14a86773ae0036cc7d3ea1b211b515b03d688"
   },
-  "code_sha256": "a4323387e750fe83168fa412a7fa779bf51dfcdcdff84a1b3fbb6b0139a643d8",
+  "code_sha256": "ff639fc481edbafcf2ea825addc45d88df5ef8791831c044ecf1ea7761a8be40",
   "outputs": {
-    "results\\问题1_逐时段结果.csv": "292913278776be177dfa7dbddb6e4fad5bb0bbbed280b511015035d37e36cdfe",
-    "results\\问题1_四小时汇总.csv": "b24d7c68777df79c88aa6646d9ac41ee3c078ee3704e39eaeb6504415a75b30a",
-    "results\\问题1_指标.csv": "ab9fe428d9a9fa9544e987251903f8c6cf279712292249a26e660cdd52a71457",
-    "results\\result1_问题1_结果.xlsx": "23f19e669a41337a46013ef6741081e0b978b4a51b37f80b61db7906eb3aab89"
+    "04_结果\\问题1_逐时段结果.csv": "292913278776be177dfa7dbddb6e4fad5bb0bbbed280b511015035d37e36cdfe",
+    "04_结果\\问题1_四小时汇总.csv": "b24d7c68777df79c88aa6646d9ac41ee3c078ee3704e39eaeb6504415a75b30a",
+    "04_结果\\问题1_指标.csv": "ab9fe428d9a9fa9544e987251903f8c6cf279712292249a26e660cdd52a71457",
+    "04_结果\\result1_问题1_结果.xlsx": "3e912be4efa8eb559571ea64897071ed2d3094dc023a8ecb13c261bf8fedb625"
   },
   "dependencies": {
     "numpy": "1.26.4",
