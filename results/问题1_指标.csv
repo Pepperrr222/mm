@@ -1,0 +1,2 @@
+﻿stage1_cost_yuan,stage2_cost_yuan,cost_gap_yuan,grid_kwh,charge_kwh,discharge_kwh,curtail_kwh,E_min_kwh,E_max_kwh,max_balance_residual_kwh,max_state_residual_kwh,simultaneous_periods,throughput_kwh
+35126.948589289634,35126.948590289634,1.0000003385357559e-06,59482.698995988336,20740.66611923683,16799.93955658183,0.0,1200.0,10800.0,2.2737367544323206e-13,8.313350008393172e-13,0,37540.60567581866

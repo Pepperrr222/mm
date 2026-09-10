@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-09-10T22:03:49.860303",
+  "python": "3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:48:34) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "command": "python 问题1_求解.py",
+  "seed": null,
+  "inputs": {
+    "problems&analysis\\problems\\C题\\附件\\附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+    "problems&analysis\\problems\\C题\\附件\\附件5\\result1.xlsx": "28360e0974e7d6065394a8aba4e14a86773ae0036cc7d3ea1b211b515b03d688"
+  },
+  "code_sha256": "a4323387e750fe83168fa412a7fa779bf51dfcdcdff84a1b3fbb6b0139a643d8",
+  "outputs": {
+    "results\\问题1_逐时段结果.csv": "292913278776be177dfa7dbddb6e4fad5bb0bbbed280b511015035d37e36cdfe",
+    "results\\问题1_四小时汇总.csv": "b24d7c68777df79c88aa6646d9ac41ee3c078ee3704e39eaeb6504415a75b30a",
+    "results\\问题1_指标.csv": "ab9fe428d9a9fa9544e987251903f8c6cf279712292249a26e660cdd52a71457",
+    "results\\result1_问题1_结果.xlsx": "23f19e669a41337a46013ef6741081e0b978b4a51b37f80b61db7906eb3aab89"
+  },
+  "dependencies": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.2",
+    "scipy": "1.13.1",
+    "openpyxl": "3.1.5",
+    "matplotlib": "3.9.2"
+  },
+  "parameters": {
+    "N": 144,
+    "dt_h": 0.16666666666666666,
+    "eta_c": 0.9,
+    "eta_d": 0.9,
+    "E_min_kwh": 1200.0,
+    "E_max_kwh": 10800.0,
+    "E0_kwh": 6000.0,
+    "P_max_kw": 5000.0,
+    "tau_yuan": 1e-06
+  },
+  "metrics": {
+    "stage1_cost_yuan": 35126.948589289634,
+    "stage2_cost_yuan": 35126.948590289634,
+    "cost_gap_yuan": 1.0000003385357559e-06,
+    "grid_kwh": 59482.698995988336,
+    "charge_kwh": 20740.66611923683,
+    "discharge_kwh": 16799.93955658183,
+    "curtail_kwh": 0.0,
+    "E_min_kwh": 1200.0,
+    "E_max_kwh": 10800.0,
+    "max_balance_residual_kwh": 2.2737367544323206e-13,
+    "max_state_residual_kwh": 8.313350008393172e-13,
+    "simultaneous_periods": 0,
+    "throughput_kwh": 37540.60567581866
+  }
+}
