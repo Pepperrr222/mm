@@ -1,0 +1,195 @@
+{
+  "A": {
+    "environment_rows": 241,
+    "environment_end_h": 4.0,
+    "environment_step_s": [
+      60.0
+    ],
+    "temperature_min_max": [
+      28.0,
+      50.246
+    ],
+    "temperature_last_hour_mean": 49.998934426229496,
+    "concentration_min_max": [
+      0.01963,
+      0.05025
+    ],
+    "concentration_last_hour_mean": 0.049987540983606554,
+    "radius_rows": 145,
+    "radius_end_h": 72.0,
+    "radius_step_s": [
+      1800.0
+    ],
+    "radius_start_end_cm": [
+      2.0,
+      1.198
+    ],
+    "radius_increase_steps": 0,
+    "radius_decline_fraction": 0.401,
+    "final_area_ratio": 0.358801,
+    "alpha_m2_s": 1.6885553470919323e-07,
+    "initial_D_m2_s": 4.937655094173937e-09,
+    "thermal_diffusion_scale_s": 2368.888888888889,
+    "moisture_diffusion_scale_h": 22.50280932789613,
+    "Bi_heat_radial": 1.3888888888888888,
+    "Bi_mass_initial_radial": 3.2404045432170427,
+    "missing_numeric": 0
+  },
+  "B": {
+    "figure_type": "constructed geometric illustration, NOT simulator data",
+    "equilateral_side_m": 40,
+    "minimum_enclosing_radius_m": 23.094010767585033,
+    "full_scan_20_channels_initial_s": 119,
+    "one_km_travel_s": 200.0,
+    "formal_simulator_runs": 0
+  },
+  "C": {
+    "days": 365,
+    "points_per_day": 144,
+    "annual_points_per_series": 52560,
+    "evaluation_days": 334,
+    "missing_numeric": 0,
+    "load_min_max_kW": [
+      1995.7176,
+      7978.8849
+    ],
+    "pv_min_max_kW": [
+      0.0,
+      10216.2
+    ],
+    "price_min_max": [
+      0.0076,
+      1.7936
+    ],
+    "annual_load_MWh": 40524.0549503,
+    "annual_pv_MWh": 20251.242811683333,
+    "pv_energy_share": 0.4997338700808719,
+    "surplus_intervals": 10130,
+    "surplus_days": 330,
+    "daily_load_mean_kWh": 111024.80808301372,
+    "storage_usable_to_daily_load": 0.08646716140073883,
+    "forecast_rows": 1460,
+    "forecast_valid_pairs": 35004,
+    "forecast_excluded_out_of_year_pairs": 36,
+    "forecast_metrics": [
+      {
+        "issue_hour": 0,
+        "n": 8760,
+        "daylight_n": 4255,
+        "MAE_all_kW": 181.31329696347032,
+        "MAE_daylight_kW": 373.2067601175088,
+        "RMSE_daylight_kW": 531.7104104891904,
+        "bias_daylight_kW": -52.68239753231492
+      },
+      {
+        "issue_hour": 6,
+        "n": 8754,
+        "daylight_n": 4255,
+        "MAE_all_kW": 97.48382746173178,
+        "MAE_daylight_kW": 200.48562366627496,
+        "RMSE_daylight_kW": 296.5325485019888,
+        "bias_daylight_kW": -15.365038754406584
+      },
+      {
+        "issue_hour": 12,
+        "n": 8748,
+        "daylight_n": 4250,
+        "MAE_all_kW": 207.86550900777323,
+        "MAE_daylight_kW": 427.7966733647059,
+        "RMSE_daylight_kW": 804.8625186302078,
+        "bias_daylight_kW": -75.03534437647059
+      },
+      {
+        "issue_hour": 18,
+        "n": 8742,
+        "daylight_n": 4246,
+        "MAE_all_kW": 259.8928429878746,
+        "MAE_daylight_kW": 534.9635084550164,
+        "RMSE_daylight_kW": 752.1567623094778,
+        "bias_daylight_kW": -110.32023685821952
+      }
+    ],
+    "matched_afternoon_count": 1946,
+    "matched_afternoon_MAE_kW": {
+      "00": 420.21575801644394,
+      "06": 252.48238350462483,
+      "12": 76.8983278520041
+    },
+    "q1_probe": {
+      "cost_yuan": 35126.948589289634,
+      "no_storage_cost_yuan": 48052.04659084667,
+      "cost_saving_fraction": 0.26898121762870164,
+      "grid_kWh": 59482.69899835392,
+      "max_equality_residual": 9.094947017729282e-13,
+      "simultaneous_charge_discharge_slots": 0,
+      "SOC_min_max_kWh": [
+        1200.0,
+        10800.0
+      ]
+    }
+  },
+  "D": {
+    "equipment": 150,
+    "class_counts": {
+      "A": 20,
+      "B": 40,
+      "C": 90
+    },
+    "horizon": 643,
+    "occurrences": 1300,
+    "conflicting_equipment_pairs": 297,
+    "overlapping_occurrence_pairs": 431,
+    "cross_class_pairs": {
+      "AB": 21,
+      "AC": 66,
+      "BC": 181,
+      "BB": 10,
+      "CC": 19
+    },
+    "equipment_in_conflict": 148,
+    "component_sizes_desc": [
+      148,
+      1,
+      1
+    ],
+    "raw_requested_area": 16680,
+    "occupied_union_cells": 14698,
+    "conflict_cells": 1842,
+    "max_cell_multiplicity": 4,
+    "requested_area_ratio": 0.2594090202177294,
+    "class_patterns": {
+      "A": [
+        [
+          10,
+          5,
+          60,
+          3
+        ]
+      ],
+      "B": [
+        [
+          15,
+          3,
+          40,
+          4
+        ]
+      ],
+      "C": [
+        [
+          3,
+          2,
+          8,
+          12
+        ]
+      ]
+    },
+    "cancellation_only_baseline": {
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "retained": 76,
+      "cancelled": 74,
+      "mip_gap": 0.0
+    },
+    "pairwise_detection_independent_check": true
+  }
+}

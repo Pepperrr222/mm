@@ -1,0 +1,7 @@
+numpy
+pandas
+openpyxl
+matplotlib
+scipy
+markdown
+python-docx

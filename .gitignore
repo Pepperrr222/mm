@@ -1,0 +1,7 @@
+# Git metadata is stored here because this workspace exposes a read-only .git placeholder.
+.gitdata/
+
+# Local caches
+__pycache__/
+*.py[cod]
+.DS_Store
