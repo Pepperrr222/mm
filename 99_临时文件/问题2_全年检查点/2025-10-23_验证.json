@@ -1,0 +1,18 @@
+{
+  "date": "2025-10-23 00:00:00",
+  "max_real_balance_residual_kwh": 2.2737367544323206e-13,
+  "max_real_state_residual_kwh": 7.958078640513122e-13,
+  "max_plan_state_residual_kwh": 9.094947017729282e-13,
+  "max_scenario_balance_residual_kwh": 5.684341886080801e-13,
+  "real_E_min_kwh": 1506.0820678844184,
+  "real_E_max_kwh": 10800.0,
+  "plan_E_min_kwh": 1200.0,
+  "plan_E_max_kwh": 10800.0,
+  "plan_terminal_gap_kwh": 0.0,
+  "simultaneous_plan_periods": 0,
+  "emergency_charge_exec_periods": 0,
+  "emergency_charge_scenario_periods": 0,
+  "emergency_surplus_scenario_periods": 0,
+  "max_charge_exec_kwh": 833.3333333333333,
+  "max_discharge_exec_kwh": 818.0559833333333
+}

@@ -7,6 +7,7 @@ import json
 import math
 import platform
 import sys
+import tempfile
 import time
 from dataclasses import dataclass
 from datetime import datetime, time as dt_time
@@ -26,6 +27,7 @@ INPUT2 = ROOT / "01_题目与数据" / "原始附件" / "附件2.xlsx"
 TEMPLATE = ROOT / "01_题目与数据" / "原始附件" / "附件5" / "result2.xlsx"
 RESULTS = ROOT / "04_结果"
 RESULTS.mkdir(exist_ok=True)
+CHECKPOINT_ROOT = ROOT / "99_临时文件" / "问题2_全年检查点"
 
 N = 144
 H = 288
@@ -531,6 +533,97 @@ def emergency_episodes(detail: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(records)
 
 
+def _atomic_csv(frame: pd.DataFrame, path: Path):
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    frame.to_csv(temporary, index=False, encoding="utf-8-sig")
+    temporary.replace(path)
+
+
+def _atomic_json(value, path: Path):
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    temporary.replace(path)
+
+
+def prepare_checkpoints(args) -> Path | None:
+    if args.days < 334:
+        return None
+    CHECKPOINT_ROOT.mkdir(parents=True, exist_ok=True)
+    config = {
+        "code_sha256": sha256(Path(__file__)),
+        "inputs": {str(p.relative_to(ROOT)): sha256(p) for p in (INPUT1, INPUT2, TEMPLATE)},
+        "days": args.days,
+        "scenarios": args.scenarios,
+        "solver_time_limit": args.solver_time_limit,
+        "mip_gap": args.mip_gap,
+        "no_gbdt": args.no_gbdt,
+        "seed": SEED,
+    }
+    config_path = CHECKPOINT_ROOT / "配置.json"
+    if config_path.exists():
+        existing = json.loads(config_path.read_text(encoding="utf-8"))
+        if existing != config:
+            raise RuntimeError(
+                "已有全年检查点与当前代码/参数不一致。请先人工核对并移走"
+                f" {CHECKPOINT_ROOT}，禁止混合续跑。"
+            )
+    else:
+        _atomic_json(config, config_path)
+    return CHECKPOINT_ROOT
+
+
+def checkpoint_paths(root: Path, date) -> dict[str, Path]:
+    stem = str(pd.Timestamp(date).date())
+    return {
+        "detail": root / f"{stem}_逐时段.csv",
+        "daily": root / f"{stem}_每日.json",
+        "forecast": root / f"{stem}_预测.csv",
+        "validation": root / f"{stem}_验证.json",
+    }
+
+
+def save_day_checkpoint(root: Path, date, detail: pd.DataFrame, daily_row: dict,
+                        forecast_rows: list[dict], validation_row: dict):
+    paths = checkpoint_paths(root, date)
+    _atomic_csv(detail, paths["detail"])
+    _atomic_csv(pd.DataFrame(forecast_rows), paths["forecast"])
+    _atomic_json(daily_row, paths["daily"])
+    _atomic_json(validation_row, paths["validation"])
+
+
+def load_day_checkpoint(root: Path, date):
+    paths = checkpoint_paths(root, date)
+    if not all(path.exists() for path in paths.values()):
+        return None
+    detail = pd.read_csv(paths["detail"], parse_dates=["date"])
+    if len(detail) != N or not np.array_equal(detail["t"].to_numpy(), np.arange(N)):
+        raise RuntimeError(f"损坏的逐时段检查点：{paths['detail']}")
+    daily_row = json.loads(paths["daily"].read_text(encoding="utf-8"))
+    daily_row["date"] = pd.Timestamp(daily_row["date"])
+    daily_row["training_cutoff"] = pd.Timestamp(daily_row["training_cutoff"])
+    forecast = pd.read_csv(paths["forecast"], parse_dates=["date", "training_cutoff"])
+    validation_row = json.loads(paths["validation"].read_text(encoding="utf-8"))
+    validation_row["date"] = pd.Timestamp(validation_row["date"])
+    return detail, daily_row, forecast.to_dict("records"), validation_row
+
+
+def run_checkpoint_unit_test():
+    with tempfile.TemporaryDirectory(prefix="q2_checkpoint_") as folder:
+        root = Path(folder)
+        date = pd.Timestamp("2025-02-01")
+        detail = pd.DataFrame({"date": [date] * N, "t": np.arange(N), "value": np.arange(N)})
+        daily = {"date": date, "training_cutoff": pd.Timestamp("2025-01-31"),
+                 "E_start_kwh": 6000.0, "E_end_kwh": 6100.0}
+        forecasts = [{"date": date, "training_cutoff": pd.Timestamp("2025-01-31"),
+                      "signal": "load", "mae_kw": 1.0}]
+        validation = {"date": date, "max_real_balance_residual_kwh": 0.0}
+        save_day_checkpoint(root, date, detail, daily, forecasts, validation)
+        loaded = load_day_checkpoint(root, date)
+        assert loaded is not None and len(loaded[0]) == N
+        assert abs(float(loaded[1]["E_end_kwh"]) - 6100.0) < 1e-12
+        assert loaded[2][0]["signal"] == "load"
+
+
 def write_full_workbook(detail: pd.DataFrame, daily: pd.DataFrame):
     output = RESULTS / "result2_问题2_结果.xlsx"
     wb = openpyxl.load_workbook(TEMPLATE)
@@ -584,7 +677,9 @@ def write_full_workbook(detail: pd.DataFrame, daily: pd.DataFrame):
 
 def run(args):
     run_execution_unit_tests()
+    run_checkpoint_unit_test()
     data = read_inputs()
+    checkpoint_root = prepare_checkpoints(args)
     forecaster = CausalForecaster(data, use_gbdt=not args.no_gbdt)
     end_day = min(len(data.dates), OUTPUT_START + args.days)
     e_real = E_INITIAL
@@ -596,6 +691,23 @@ def run(args):
         if day < OUTPUT_START:
             forecaster.observe(day, fc)
             continue
+        if checkpoint_root is not None:
+            saved = load_day_checkpoint(checkpoint_root, data.dates[day])
+            if saved is not None:
+                saved_detail, saved_daily, saved_forecasts, saved_validation = saved
+                if abs(float(saved_daily["E_start_kwh"]) - e_real) > 1e-5:
+                    raise RuntimeError(
+                        f"检查点跨日状态不连续：{data.dates[day].date()} "
+                        f"expected={e_real}, saved={saved_daily['E_start_kwh']}"
+                    )
+                detail_parts.append(saved_detail)
+                daily_rows.append(saved_daily)
+                forecast_rows.extend(saved_forecasts)
+                validation_rows.append(saved_validation)
+                e_real = float(saved_daily["E_end_kwh"])
+                forecaster.observe(day, fc)
+                print(f"[{data.dates[day].date()}] resumed checkpoint, E={e_real:.2f}", flush=True)
+                continue
         load_s, pv_s, sampled = generate_scenarios(fc, forecaster, day, args.scenarios)
         plan = solve_with_fallback(
             data.price, load_s, pv_s, e_real, args.solver_time_limit, args.mip_gap
@@ -607,9 +719,9 @@ def run(args):
             real, plan, e_real, plan["validation_load_s"], plan["validation_pv_s"]
         )
         detail_parts.append(real)
-        validation_rows.append({"date": data.dates[day], **checks})
-        daily_rows.append(
-            {
+        validation_row = {"date": data.dates[day], **checks}
+        validation_rows.append(validation_row)
+        daily_row = {
                 "date": data.dates[day],
                 "E_start_kwh": e_real,
                 "E_end_kwh": e_next,
@@ -632,12 +744,12 @@ def run(args):
                 ),
                 "training_cutoff": data.dates[forecaster.training_cutoffs[day]],
             }
-        )
+        daily_rows.append(daily_row)
+        day_forecast_rows = []
         for signal in ("load", "pv"):
             actual = data.load_kw[day] if signal == "load" else data.pv_kw[day]
             pred = fc[f"{signal}_day0"]
-            forecast_rows.append(
-                {
+            record = {
                     "date": data.dates[day], "signal": signal,
                     "mae_kw": float(np.mean(np.abs(actual - pred))),
                     "rmse_kw": float(np.sqrt(np.mean((actual - pred) ** 2))),
@@ -645,6 +757,12 @@ def run(args):
                     "weights": json.dumps(fc["weights"][signal], ensure_ascii=False),
                     "training_cutoff": data.dates[day - 1],
                 }
+            forecast_rows.append(record)
+            day_forecast_rows.append(record)
+        if checkpoint_root is not None:
+            save_day_checkpoint(
+                checkpoint_root, data.dates[day], real, daily_row,
+                day_forecast_rows, validation_row,
             )
         e_real = e_next
         forecaster.observe(day, fc)

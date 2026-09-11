@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "assertions": {
+    "complete_334_days": true,
+    "date_range_ok": true,
+    "cost_recompute_ok": true,
+    "balance_ok": true,
+    "state_ok": true,
+    "energy_bounds_ok": true,
+    "logic_ok": true,
+    "planned_and_scenario_residuals_ok": true,
+    "scenario_logic_ok": true,
+    "workbook_ok": true
+  },
+  "metrics": {
+    "rows_detail": 48096,
+    "days": 334,
+    "date_start": "2025-02-01",
+    "date_end": "2025-12-31",
+    "rows_per_day_min": 144,
+    "rows_per_day_max": 144,
+    "plan_cost_recomputed_yuan": 13670139.413004687,
+    "plan_cost_reported_yuan": 13670139.413004687,
+    "emergency_cost_recomputed_yuan": 1284715.7936944948,
+    "emergency_cost_reported_yuan": 1284715.7936944948,
+    "total_cost_yuan": 14954855.206699181,
+    "max_balance_residual_kwh": 5.684341886080801e-13,
+    "max_state_residual_kwh": 5.4569682106375694e-12,
+    "max_cross_day_state_gap_kwh": 0.0,
+    "energy_min_kwh": 1200.0,
+    "energy_max_kwh": 10800.0,
+    "simultaneous_plan_periods": 0,
+    "emergency_charge_periods": 0,
+    "forecast_rows": 668,
+    "validation_days": 334,
+    "max_plan_state_residual_kwh": 1.1912186437257333e-07,
+    "max_scenario_balance_residual_kwh": 1.482587137502378e-07,
+    "validation_simultaneous_plan_periods": 0,
+    "validation_emergency_charge_scenario_periods": 0,
+    "validation_emergency_surplus_scenario_periods": 0,
+    "fallback_counts": {
+      "10_scenario": 271,
+      "main": 62,
+      "deterministic_q80": 1
+    },
+    "workbook_sheets": {
+      "计划购电量": [
+        335,
+        147
+      ],
+      "充放电量": [
+        2005,
+        6
+      ],
+      "紧急购电量": [
+        3592,
+        3
+      ]
+    },
+    "workbook_formula_error_count": 0,
+    "workbook_required_dates_present": true,
+    "workbook_first_interval": "0:00-0:10",
+    "workbook_last_interval": "23:50-0:00+1"
+  },
+  "formula_errors": []
+}
