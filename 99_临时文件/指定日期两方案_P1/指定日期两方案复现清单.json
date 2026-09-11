@@ -1,0 +1,49 @@
+{
+  "dates": [
+    "2025-03-20"
+  ],
+  "comparison_scope": "各日期独立对照；两方案使用相同正式E_start、预测、3条残差场景和真实回放数据",
+  "difference": "48h使用288段循环终端；24h使用144段和因果动态终端价值",
+  "seed": 20260910,
+  "scenarios": 3,
+  "solver_time_limit_s": 20.0,
+  "mip_gap": 1e-06,
+  "files": {
+    "comparison_code": {
+      "path": "D:\\Git\\mm\\03_代码\\问题2_指定日期两方案对比.py",
+      "sha256": "b34775e7569540bb7e2a4fc727d434b4af5cbf207ccc4287b89bb9b29b8574c4"
+    },
+    "terminal_code": {
+      "path": "D:\\Git\\mm\\03_代码\\问题2_终端价值实验.py",
+      "sha256": "2e57aa2be3decdae3036b27878ed8dbf2a009622da8b4e0bdbc149a7d72d601f"
+    },
+    "baseline_code": {
+      "path": "D:\\Git\\mm\\03_代码\\问题2_求解.py",
+      "sha256": "8a48c616abfbd59bcd99589b2f8300f34b31ba709142d0f5375b0b717bea3188"
+    },
+    "attachment1": {
+      "path": "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件1.xlsx",
+      "sha256": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377"
+    },
+    "attachment2": {
+      "path": "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件2.xlsx",
+      "sha256": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72"
+    },
+    "official_daily": {
+      "path": "D:\\Git\\mm\\04_结果\\问题2_每日指标.csv",
+      "sha256": "f06dd9b0fb4614e542d096b3cf0fbd370970d37e249d8c9b6448c0b58d13b6b0"
+    }
+  },
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.2",
+    "scipy": "1.13.1",
+    "scikit-learn": "1.5.1",
+    "openpyxl": "3.1.5"
+  },
+  "outputs": {
+    "99_临时文件\\指定日期两方案_P1\\指定日期两方案逐项结果.csv": "ca3b6e35b2393e4309082a778384c5039d8faa7b734c50ecd4d8e7036172acbc",
+    "99_临时文件\\指定日期两方案_P1\\指定日期两方案对比.csv": "580b4ac3d8073d99805881a467489ccdb4d581d5b9025df2bacc0c56e3b5f718"
+  },
+  "command": "python 03_代码/问题2_指定日期两方案对比.py --dates 2025-03-20 --scenarios 3 --solver-time-limit 20 --output-dir 99_临时文件/指定日期两方案_P1"
+}

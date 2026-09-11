@@ -1,0 +1,2 @@
+﻿date,E_initial_kwh,dynamic_v_yuan_per_kwh,cost_48h_yuan,cost_24h_dynamic_yuan,cost_delta_24_minus_48_yuan,emergency_cost_48h_yuan,emergency_cost_24h_dynamic_yuan,emergency_cost_delta_yuan,E_end_48h_kwh,E_end_24h_dynamic_kwh,E_end_delta_kwh,inventory_approx_adjusted_delta_at_dynamic_v_yuan,shared_scenarios
+2025-03-20,8110.222217026236,0.39540224151076475,43465.55865190631,41548.20590337236,-1917.3527485339437,2448.6860484465233,2528.473727959393,79.78767951286954,5768.144074662055,1469.0182711930634,-4299.125803468991,-217.46876930553708,True

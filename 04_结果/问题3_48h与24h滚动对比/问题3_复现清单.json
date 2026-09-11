@@ -1,0 +1,33 @@
+{
+  "script": "D:\\Git\\mm\\03_代码\\problem3_rolling_compare.py",
+  "script_sha256": "ecace8a23d02230e41c79ba61b0cee2bc12d200b7d6153da8de0fde5da056568",
+  "input_script": "D:\\Git\\mm\\03_代码\\问题2_求解.py",
+  "input_sha256": "8a48c616abfbd59bcd99589b2f8300f34b31ba709142d0f5375b0b717bea3188",
+  "input_xlsx_sha256": {
+    "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+    "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件2.xlsx": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72",
+    "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件3.xlsx": "8a61b06c52bd0d639a1cc37c61a7d9f5b75edcbca718f64c1bd3498ec9f9d843",
+    "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件4.xlsx": "20e9c93aeab5e8e21ae4dd15587f9e190f7408692504c1319598461cd654fe71"
+  },
+  "attachment3": "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件3.xlsx",
+  "start_day_index": 31,
+  "end_day_index": 364,
+  "execution_step_h": 6,
+  "horizons_h": [
+    48,
+    24
+  ],
+  "seed": 20260912,
+  "model": "causal daily forecast + deterministic storage MILP + actual six-hour replay",
+  "no_future_actuals_in_plan": true,
+  "outputs": [
+    "问题3_24h_每日指标.csv",
+    "问题3_24h_逐时段结果.csv",
+    "问题3_48h_每日指标.csv",
+    "问题3_48h_逐时段结果.csv",
+    "问题3_两方案对比报告.md",
+    "问题3_两方案汇总.csv",
+    "问题3_复现清单.json",
+    "问题3_每日配对差.csv"
+  ]
+}
