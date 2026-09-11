@@ -1,0 +1,16 @@
+{
+  "start_date": "2025-02-01",
+  "days": 1,
+  "scenarios": 3,
+  "fixed_terminal_values": [
+    0.0,
+    0.8
+  ],
+  "dynamic": true,
+  "delta_energy_kwh": 100.0,
+  "initial_energy_kwh": 6000.0,
+  "information_rule": "动态价值仅使用当日0:00可得的未来一天预测，不使用未来真实值",
+  "baseline": "正式48小时循环终端模型；实验分支为24小时线性终端价值模型",
+  "max_experiment_residual_kwh": 8.242295734817162e-13,
+  "command": "python 03_代码/问题2_终端价值实验.py --start-date 2025-02-01 --days 1 --scenarios 3 --fixed-values 0,0.8 --dynamic --solver-time-limit 10 --output-dir D:\\Git\\mm\\99_临时文件\\终端价值实验_P1"
+}

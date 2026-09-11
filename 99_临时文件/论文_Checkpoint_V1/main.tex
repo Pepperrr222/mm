@@ -71,7 +71,7 @@
   \item 储能充电效率与放电效率均取 $\eta_c=\eta_d=0.9$；充放电量定义在交流母线侧。
   \item 不允许向外部电网售电。光伏和计划购电超过当期需要的部分记为未利用剩余电量，不产生收入。
   \item 外网计划购电没有题面之外的额外功率上限；储能最大充放电功率为5000 kW。
-  \item 问题一采用 $E_0=E_{144}=6000$ kWh。问题二从2025年2月1日开始评价，1月只作为预测历史窗口且储能不参与调度，并将全年实际状态链校准为 $E_{d_0,0}^{\mathrm{real}}=6000$ kWh，其中 $d_0$ 表示2025年2月1日。
+  \item 问题一采用 $E_0=E_{144}=6000$ kWh。问题二从2025年2月1日开始评价，1月数据只构成初始历史窗口。
   \item 问题二制定第 $d$ 日计划时只能使用严格早于 $d$ 的负荷与光伏数据；第 $d$ 日实际数据只能在计划冻结后用于回放。
 \end{enumerate}
 
@@ -326,20 +326,6 @@ h_{d,t}^{\mathrm{real}}=
 -g_{d,t}-P_{d,t}^{\mathrm{real}}\Delta t-d_{d,t}^{\mathrm{exec}}\right]_+.
 \label{eq:q2-real-emergency}
 \end{equation}
-相应地，实际未利用剩余电量定义为
-\begin{equation}
-w_{d,t}^{\mathrm{real}}=
-\left[g_{d,t}+P_{d,t}^{\mathrm{real}}\Delta t+d_{d,t}^{\mathrm{exec}}
--L_{d,t}^{\mathrm{real}}\Delta t-c_{d,t}^{\mathrm{exec}}\right]_+.
-\label{eq:q2-real-surplus}
-\end{equation}
-于是每个时段满足完整的实际能量平衡与缺口、剩余互补关系
-\begin{equation}
-g_{d,t}+P_{d,t}^{\mathrm{real}}\Delta t+d_{d,t}^{\mathrm{exec}}+h_{d,t}^{\mathrm{real}}
-=L_{d,t}^{\mathrm{real}}\Delta t+c_{d,t}^{\mathrm{exec}}+w_{d,t}^{\mathrm{real}},
-\qquad h_{d,t}^{\mathrm{real}}w_{d,t}^{\mathrm{real}}=0.
-\label{eq:q2-real-balance}
-\end{equation}
 日末实际状态通过
 \begin{equation}
 E_{d,t+1}^{\mathrm{real}}=
@@ -349,7 +335,7 @@ E_{d,t}^{\mathrm{real}}+\eta_c c_{d,t}^{\mathrm{exec}}
 E_{d+1,0}^{\mathrm{real}}=E_{d,144}^{\mathrm{real}}
 \label{eq:q2-real-state}
 \end{equation}
-传给次日；状态链起点采用前述 $E_{d_0,0}^{\mathrm{real}}=6000$ kWh。由此，预测误差影响的是当天计划质量和当天费用，而不是作为虚假的预测状态被全年继承。使用实际值结算并非事后修改计划，因为 $g_{d,t}$ 在当天0:00已经冻结。
+传给次日。由此，预测误差影响的是当天计划质量和当天费用，而不是作为虚假的预测状态被全年继承。使用实际值结算并非事后修改计划，因为 $g_{d,t}$ 在当天0:00已经冻结。
 
 \subsection{求解限时与回退机制}
 
@@ -360,7 +346,7 @@ E_{d+1,0}^{\mathrm{real}}=E_{d,144}^{\mathrm{real}}
 \end{equation}
 因此Q80可作为保守且有经济含义的最后回退，而不是任意常数。
 
-图\ref{fig:q2-modes}给出全年实际采用的模式：30情景主模型62天、10情景回退271天、Q80回退1天。Q80回退发生在2025年4月8日。该分布说明在给定计算时限下，全年结果是混合执行策略，不能表述为纯30情景方案。
+图\ref{fig:q2-modes}给出全年实际采用的模式：30情景主模型62天、10情景回退271天、Q80回退1天。Q80回退发生在2025年4月8日。该分布说明全年在给定计算时限下，全年结果是混合执行策略，不能表述为纯30情景方案。
 
 \begin{figure}[H]
 \centering
@@ -489,7 +475,7 @@ C_d^{\mathrm{real}}=
 
 \subsection{费用与模板复算}
 
-计划费用通过 $\sum p_tg_{d,t}$ 逐时复算为 $13670139.413004687$ 元，紧急费用通过 $\sum5p_th_{d,t}^{\mathrm{real}}$ 复算为 $1284715.793694495$ 元，与每日汇总完全一致。结果工作簿包含334行计划购电、2004行六段充放电汇总和3591行紧急购电模板数据，其中3570行为正紧急购电区间、21行为无紧急购电日期的零值占位；日期、144个时段表头及四个指定日期均与CSV一致。
+计划费用通过 $\sum p_tg_{d,t}$ 逐时复算为 $13670139.413004687$ 元，紧急费用通过 $\sum5p_th_{d,t}^{\mathrm{real}}$ 复算为 $1284715.793694495$ 元，与每日汇总完全一致。结果工作簿包含334行计划购电、2004行六段充放电汇总和3591条紧急购电记录；日期、144个时段表头及四个指定日期均与CSV一致。
 
 \section{模型评价与适用边界}
 
@@ -542,6 +528,6 @@ C_d^{\mathrm{real}}=
   \item \texttt{05\_图表/}：论文使用的正式图表及灰度预览。
 \end{enumerate}
 
-本文研究范围仅限问题一和问题二；上述结果、代码与验证文件共同构成文中数值结论的复算依据。
+本稿只覆盖问题一和问题二，用于团队理解模型、核对证据和继续撰写完整竞赛论文；正式提交前仍需结合其余问题、当届人工智能工具使用规定及赛区要求统一修订。
 
 \end{document}
