@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib.metadata
 import importlib.util
 import json
 import math
@@ -145,7 +146,7 @@ def estimate_marginal_value(
     delta_energy: float,
     time_limit: float,
     mip_gap: float,
-) -> tuple[float, float]:
+) -> dict:
     """只用发布计划时已有的次日预测，以有限差分估计边际储能价值。"""
     low_energy = float(np.clip(reference_energy, base.E_MIN, base.E_MAX - delta_energy))
     high_energy = low_energy + delta_energy
@@ -156,36 +157,18 @@ def estimate_marginal_value(
     raw_value = (low_plan["objective"] - high_plan["objective"]) / delta_energy
     economic_cap = base.EMERGENCY_MULTIPLIER * float(np.max(price)) * base.ETA_D
     clipped_value = float(np.clip(raw_value, 0.0, economic_cap))
-    return float(raw_value), clipped_value
-
-
-def validate_plan(plan: dict, load_s_kw: np.ndarray, pv_s_kw: np.ndarray) -> dict:
-    state_residual = (
-        plan["E"][1:] - plan["E"][:-1]
-        - base.ETA_C * plan["charge"] + plan["discharge"] / base.ETA_D
-    )
-    balance_residual = (
-        plan["grid"][None, :] + pv_s_kw * base.DT + plan["discharge"][None, :] + plan["h"]
-        - load_s_kw * base.DT - plan["charge"][None, :] - plan["w"]
-    )
-    checks = {
-        "max_plan_state_residual_kwh": float(np.max(np.abs(state_residual))),
-        "max_scenario_balance_residual_kwh": float(np.max(np.abs(balance_residual))),
-        "simultaneous_plan_periods": int(np.sum(
-            (plan["charge"] > base.TAU) & (plan["discharge"] > base.TAU)
-        )),
-        "plan_E_min_kwh": float(np.min(plan["E"])),
-        "plan_E_max_kwh": float(np.max(plan["E"])),
+    return {
+        "raw_value": float(raw_value),
+        "used_value": clipped_value,
+        "E_low_kwh": low_energy,
+        "E_high_kwh": high_energy,
+        "J_low_yuan": float(low_plan["objective"]),
+        "J_high_yuan": float(high_plan["objective"]),
+        "low_mip_gap": float(low_plan["mip_gap"]),
+        "high_mip_gap": float(high_plan["mip_gap"]),
+        "low_solver_time_s": float(low_plan["elapsed_s"]),
+        "high_solver_time_s": float(high_plan["elapsed_s"]),
     }
-    if checks["max_plan_state_residual_kwh"] > 1e-5:
-        raise RuntimeError(f"计划状态递推失败：{checks}")
-    if checks["max_scenario_balance_residual_kwh"] > 1e-5:
-        raise RuntimeError(f"情景能量平衡失败：{checks}")
-    if checks["simultaneous_plan_periods"]:
-        raise RuntimeError(f"计划同时充放电：{checks}")
-    if checks["plan_E_min_kwh"] < base.E_MIN - 1e-5 or checks["plan_E_max_kwh"] > base.E_MAX + 1e-5:
-        raise RuntimeError(f"计划储能越界：{checks}")
-    return checks
 
 
 def parse_values(text: str) -> list[float]:
@@ -208,7 +191,8 @@ def run(args) -> dict:
     if args.dynamic:
         mode_names.append("dynamic_v")
 
-    baseline_daily = pd.read_csv(ROOT / "04_结果" / "问题2_每日指标.csv", parse_dates=["date"])
+    baseline_path = ROOT / "04_结果" / "问题2_每日指标.csv"
+    baseline_daily = pd.read_csv(baseline_path, parse_dates=["date"])
     baseline_start = baseline_daily.loc[baseline_daily.date == data.dates[start_day], "E_start_kwh"]
     if baseline_start.empty:
         raise ValueError("基准结果中不存在实验起始日")
@@ -230,8 +214,14 @@ def run(args) -> dict:
         for mode in mode_names:
             e_start = energies[mode]
             raw_value = np.nan
+            finite_difference = {
+                "E_low_kwh": np.nan, "E_high_kwh": np.nan,
+                "J_low_yuan": np.nan, "J_high_yuan": np.nan,
+                "low_mip_gap": np.nan, "high_mip_gap": np.nan,
+                "low_solver_time_s": np.nan, "high_solver_time_s": np.nan,
+            }
             if mode == "dynamic_v":
-                raw_value, terminal_value = estimate_marginal_value(
+                finite_difference = estimate_marginal_value(
                     data.price,
                     forecast["load"][base.N:],
                     forecast["pv"][base.N:],
@@ -240,6 +230,8 @@ def run(args) -> dict:
                     args.solver_time_limit,
                     args.mip_gap,
                 )
+                raw_value = finite_difference["raw_value"]
+                terminal_value = finite_difference["used_value"]
             else:
                 terminal_value = float(mode.removeprefix("fixed_v_"))
             plan = solve_value_milp(
@@ -251,10 +243,14 @@ def run(args) -> dict:
                 args.solver_time_limit,
                 args.mip_gap,
             )
-            checks = validate_plan(plan, today_load_s, today_pv_s)
             real, e_end = base.replay_day(
                 data.dates[day], data.price, data.load_kw[day], data.pv_kw[day], plan, e_start
             )
+            checks = base.validate_day(real, plan, e_start, today_load_s, today_pv_s)
+            if checks["max_charge_exec_kwh"] > base.Q_MAX + 1e-5:
+                raise RuntimeError(f"实际充电功率越界：{checks}")
+            if checks["max_discharge_exec_kwh"] > base.Q_MAX + 1e-5:
+                raise RuntimeError(f"实际放电功率越界：{checks}")
             real_balance = (
                 real.grid_kwh + real.pv_kw * base.DT + real.discharge_exec_kwh + real.emergency_kwh
                 - real.load_kw * base.DT - real.charge_exec_kwh - real.surplus_kwh
@@ -262,6 +258,7 @@ def run(args) -> dict:
             residual = max(
                 checks["max_plan_state_residual_kwh"],
                 checks["max_scenario_balance_residual_kwh"],
+                checks["max_real_state_residual_kwh"],
                 float(np.max(np.abs(real_balance))),
             )
             max_residual = max(max_residual, residual)
@@ -270,9 +267,19 @@ def run(args) -> dict:
                 "mode": mode,
                 "terminal_value_raw_yuan_per_kwh": raw_value,
                 "terminal_value_used_yuan_per_kwh": terminal_value,
+                "finite_diff_E_low_kwh": finite_difference["E_low_kwh"],
+                "finite_diff_E_high_kwh": finite_difference["E_high_kwh"],
+                "finite_diff_J_low_yuan": finite_difference["J_low_yuan"],
+                "finite_diff_J_high_yuan": finite_difference["J_high_yuan"],
+                "finite_diff_low_mip_gap": finite_difference["low_mip_gap"],
+                "finite_diff_high_mip_gap": finite_difference["high_mip_gap"],
+                "finite_diff_low_solver_time_s": finite_difference["low_solver_time_s"],
+                "finite_diff_high_solver_time_s": finite_difference["high_solver_time_s"],
                 "E_start_kwh": e_start,
                 "E_plan_end_kwh": float(plan["E"][-1]),
                 "E_real_end_kwh": e_end,
+                "real_E_min_kwh": checks["real_E_min_kwh"],
+                "real_E_max_kwh": checks["real_E_max_kwh"],
                 "plan_cost_yuan": float(real.plan_cost_yuan.sum()),
                 "emergency_cost_yuan": float(real.emergency_cost_yuan.sum()),
                 "total_cost_yuan": float(real.plan_cost_yuan.sum() + real.emergency_cost_yuan.sum()),
@@ -281,8 +288,21 @@ def run(args) -> dict:
                 "charge_exec_kwh": float(real.charge_exec_kwh.sum()),
                 "discharge_exec_kwh": float(real.discharge_exec_kwh.sum()),
                 "solver_elapsed_s": float(plan["elapsed_s"]),
+                "solver_mip_gap": float(plan["mip_gap"]),
                 "sampled_residual_days": json.dumps(sampled, ensure_ascii=False),
+                "sampled_residual_dates": json.dumps(
+                    [str(data.dates[index].date()) for index in sampled], ensure_ascii=False
+                ),
+                "training_cutoff": str(data.dates[forecaster.training_cutoffs[day]].date()),
+                "scenario_count": int(plan["scenario_count"]),
+                "horizon_hours": 24,
                 "max_residual_kwh": residual,
+                "max_real_state_residual_kwh": checks["max_real_state_residual_kwh"],
+                "emergency_charge_exec_periods": checks["emergency_charge_exec_periods"],
+                "emergency_charge_scenario_periods": checks["emergency_charge_scenario_periods"],
+                "emergency_surplus_scenario_periods": checks["emergency_surplus_scenario_periods"],
+                "max_charge_exec_kwh": checks["max_charge_exec_kwh"],
+                "max_discharge_exec_kwh": checks["max_discharge_exec_kwh"],
             })
             energies[mode] = e_end
         forecaster.observe(day, forecast)
@@ -302,33 +322,34 @@ def run(args) -> dict:
         discharge_exec_kwh=("discharge_exec_kwh", "sum"),
         E_start_kwh=("E_start_kwh", "first"),
         E_end_kwh=("E_real_end_kwh", "last"),
-        E_min_kwh=("E_real_end_kwh", "min"),
-        E_max_kwh=("E_real_end_kwh", "max"),
+        E_min_kwh=("real_E_min_kwh", "min"),
+        E_max_kwh=("real_E_max_kwh", "max"),
         mean_terminal_value=("terminal_value_used_yuan_per_kwh", "mean"),
         solver_time_s=("solver_elapsed_s", "sum"),
         max_residual_kwh=("max_residual_kwh", "max"),
     )
+    controlled = summary.loc[summary["mode"] == "fixed_v_0"]
+    if controlled.empty:
+        raise ValueError("受控比较必须在 --fixed-values 中包含0")
+    controlled_cost = float(controlled.iloc[0]["total_cost_yuan"])
+    controlled_emergency = float(controlled.iloc[0]["emergency_cost_yuan"])
+    summary["cost_delta_vs_fixed_v0_yuan"] = summary.total_cost_yuan - controlled_cost
+    summary["emergency_cost_delta_vs_fixed_v0_yuan"] = (
+        summary.emergency_cost_yuan - controlled_emergency
+    )
+
     experiment_dates = data.dates[start_day:end_day]
-    baseline_slice = baseline_daily[baseline_daily.date.isin(experiment_dates)]
-    baseline_summary = {
-        "mode": "official_48h_cyclic",
-        "days": int(len(baseline_slice)),
-        "total_cost_yuan": float(baseline_slice.total_cost_yuan.sum()),
-        "plan_cost_yuan": float(baseline_slice.plan_cost_yuan.sum()),
-        "emergency_cost_yuan": float(baseline_slice.emergency_cost_yuan.sum()),
-        "emergency_kwh": float(baseline_slice.emergency_kwh.sum()),
-        "surplus_kwh": float(baseline_slice.surplus_kwh.sum()),
-        "charge_exec_kwh": float(baseline_slice.charge_exec_kwh.sum()),
-        "discharge_exec_kwh": float(baseline_slice.discharge_exec_kwh.sum()),
-        "E_start_kwh": float(baseline_slice.E_start_kwh.iloc[0]),
-        "E_end_kwh": float(baseline_slice.E_end_kwh.iloc[-1]),
-        "E_min_kwh": float(baseline_slice.E_end_kwh.min()),
-        "E_max_kwh": float(baseline_slice.E_end_kwh.max()),
-        "mean_terminal_value": np.nan,
-        "solver_time_s": np.nan,
-        "max_residual_kwh": np.nan,
+    official_slice = baseline_daily[baseline_daily.date.isin(experiment_dates)]
+    official_reference = {
+        "role": "背景参照，不用于识别终端价值的单因素因果效应",
+        "horizon_hours": 48,
+        "terminal_contract": "E_288=E_0",
+        "days": int(len(official_slice)),
+        "total_cost_yuan": float(official_slice.total_cost_yuan.sum()),
+        "scenario_count_used": sorted({int(x) for x in official_slice.scenario_count_used}),
+        "fallback_counts": {str(k): int(v) for k, v in official_slice.fallback.value_counts().items()},
+        "residual_paths": "正式模型按其复现清单抽样，与本实验24小时受控情景不相同",
     }
-    summary = pd.concat([pd.DataFrame([baseline_summary]), summary], ignore_index=True)
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -347,7 +368,21 @@ def run(args) -> dict:
         "initial_energy_kwh": initial_energy,
         "information_rule": "动态价值仅使用当日0:00可得的未来一天预测，不使用未来真实值",
         "baseline": "正式48小时循环终端模型；实验分支为24小时线性终端价值模型",
+        "controlled_comparison": "实验分支均使用同一预测、同一残差情景、同一求解门限；fixed_v_0是单因素受控基线",
+        "official_reference": official_reference,
         "max_experiment_residual_kwh": max_residual,
+        "seed": base.SEED,
+        "files": {
+            "experiment_code": {"path": str(Path(__file__)), "sha256": base.sha256(Path(__file__))},
+            "baseline_code": {"path": str(BASE_PATH), "sha256": base.sha256(BASE_PATH)},
+            "attachment1": {"path": str(base.INPUT1), "sha256": base.sha256(base.INPUT1)},
+            "attachment2": {"path": str(base.INPUT2), "sha256": base.sha256(base.INPUT2)},
+            "official_daily": {"path": str(baseline_path), "sha256": base.sha256(baseline_path)},
+        },
+        "versions": {
+            name: importlib.metadata.version(name)
+            for name in ("numpy", "pandas", "scipy", "scikit-learn", "openpyxl")
+        },
         "command": "python 03_代码/问题2_终端价值实验.py " + " ".join(args.raw_argv),
     }
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")

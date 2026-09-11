@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "created_at": "2026-09-11T07:08:09.910611+00:00",
+  "created_at": "2026-09-11T11:17:56.982916+00:00",
   "passed": true,
   "main_tex": "main.tex",
   "project_root": "D:\\Git\\mm\\完整论文-LaTeX",
-  "source_sha256": "283836fc62664b3fca6b3c5e8cd273e6fff79f4fdda57374e797c3358251d95b",
-  "compiled_source_sha256": "283836fc62664b3fca6b3c5e8cd273e6fff79f4fdda57374e797c3358251d95b",
-  "post_build_source_sha256": "283836fc62664b3fca6b3c5e8cd273e6fff79f4fdda57374e797c3358251d95b",
-  "pdf_sha256": "5d1783e8b01cbceb54f86ea08772c41caf3df60b18b507b9d70d9c1fc9a7f9a4",
+  "source_sha256": "3b0c59dce354524650ed491f99b6a4de434c02b3d045f17e59d80d16ab37b6fa",
+  "compiled_source_sha256": "3b0c59dce354524650ed491f99b6a4de434c02b3d045f17e59d80d16ab37b6fa",
+  "post_build_source_sha256": "3b0c59dce354524650ed491f99b6a4de434c02b3d045f17e59d80d16ab37b6fa",
+  "pdf_sha256": "250017e1749f5342fca5e168d694cdaf45ffd9ce0a97b1355fe73a10e70da839",
   "project_manifest_sha256": "90647e60c2b28b762db0110b0c1c5b72455a5c860e6fc984a55a42298be679f7",
   "engine": "xelatex",
   "tools": {
@@ -37,7 +37,7 @@
       ],
       "cwd": "D:\\Git\\mm\\完整论文-LaTeX",
       "returncode": 0,
-      "duration_seconds": 16.625
+      "duration_seconds": 16.454
     }
   ],
   "warnings": [],

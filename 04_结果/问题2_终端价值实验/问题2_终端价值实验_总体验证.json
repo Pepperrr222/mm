@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "windows": [
+    "冬季_02月",
+    "夏季_08月",
+    "春季_05月",
+    "秋季_11月"
+  ],
+  "days_per_mode": 56,
+  "controlled_baseline": "fixed_v_0",
+  "salvage_reference_yuan_per_kwh": 0.45,
+  "max_residual_kwh": 3.2105162972584367e-10,
+  "information_leakage_count": 0,
+  "cross_day_state_gap_max_kwh": 0.0,
+  "shared_scenario_violations": 0,
+  "mutual_exclusion_violations": 0,
+  "source_files": {
+    "04_结果\\问题2_终端价值实验\\冬季_02月\\问题2_终端价值实验_汇总.csv": "913c4bbfd70c774482b9c33e4ec6f4173d2b7e5eb8e742fcf294ba39044421d4",
+    "04_结果\\问题2_终端价值实验\\夏季_08月\\问题2_终端价值实验_汇总.csv": "2a32a7d41de64213f31402a5402d8002208b05621dc2b5febd8a7caf4d2b4987",
+    "04_结果\\问题2_终端价值实验\\春季_05月\\问题2_终端价值实验_汇总.csv": "5c057b6436986ff92a6cff6c24642b59bb232a2277d067f953f7434117ff6997",
+    "04_结果\\问题2_终端价值实验\\秋季_11月\\问题2_终端价值实验_汇总.csv": "cdc75e10ac014d4f05f9fc4d92f71e05f2959da76f8b607660debbe8bbda6595",
+    "04_结果\\问题2_终端价值实验\\冬季_02月\\问题2_终端价值实验_逐日.csv": "bc629cac9b7efa2ab59bdaa0a5199eb16680d64671df2114e98b2aa9a1764be5",
+    "04_结果\\问题2_终端价值实验\\夏季_08月\\问题2_终端价值实验_逐日.csv": "22f51a2cb15a041dcbacc5ab7f0ec11f76f25f30cf17d561d22e5d497f823aa1",
+    "04_结果\\问题2_终端价值实验\\春季_05月\\问题2_终端价值实验_逐日.csv": "d6e128881b52ac643f4ad5809d8172296f55d0d07c2aa0ca5ee08f71c8293de4",
+    "04_结果\\问题2_终端价值实验\\秋季_11月\\问题2_终端价值实验_逐日.csv": "b081c0d7d76c17268c4215e1edb14b77d85af13cbfb2892b9a2243329466f318"
+  },
+  "outputs": {
+    "04_结果\\问题2_终端价值实验\\问题2_终端价值实验_窗口汇总.csv": "1f382dae1127b312abfe0b1b10ddfc3e55a11ec68c49760f402309bef07b52e2",
+    "04_结果\\问题2_终端价值实验\\问题2_终端价值实验_四季汇总.csv": "43dc82802a111ad1592238c7ddc582e17cdfa97c92f9ea164568ea66117b9c3a"
+  }
+}

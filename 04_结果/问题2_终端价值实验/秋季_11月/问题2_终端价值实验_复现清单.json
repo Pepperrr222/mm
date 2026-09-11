@@ -1,14 +1,17 @@
 {
-  "start_date": "2025-02-01",
-  "days": 2,
-  "scenarios": 3,
+  "start_date": "2025-11-01",
+  "days": 14,
+  "scenarios": 10,
   "fixed_terminal_values": [
     0.0,
-    0.8
+    0.3,
+    0.5,
+    0.8,
+    1.0
   ],
   "dynamic": true,
   "delta_energy_kwh": 100.0,
-  "initial_energy_kwh": 6000.0,
+  "initial_energy_kwh": 8516.546192033207,
   "information_rule": "动态价值仅使用当日0:00可得的未来一天预测，不使用未来真实值",
   "baseline": "正式48小时循环终端模型；实验分支为24小时线性终端价值模型",
   "controlled_comparison": "实验分支均使用同一预测、同一残差情景、同一求解门限；fixed_v_0是单因素受控基线",
@@ -16,22 +19,24 @@
     "role": "背景参照，不用于识别终端价值的单因素因果效应",
     "horizon_hours": 48,
     "terminal_contract": "E_288=E_0",
-    "days": 2,
-    "total_cost_yuan": 94014.88306343566,
+    "days": 14,
+    "total_cost_yuan": 615481.5286325263,
     "scenario_count_used": [
-      10
+      10,
+      30
     ],
     "fallback_counts": {
-      "10_scenario": 2
+      "main": 10,
+      "10_scenario": 4
     },
     "residual_paths": "正式模型按其复现清单抽样，与本实验24小时受控情景不相同"
   },
-  "max_experiment_residual_kwh": 9.094947017729282e-13,
+  "max_experiment_residual_kwh": 2.97859514830634e-11,
   "seed": 20260910,
   "files": {
     "experiment_code": {
       "path": "D:\\Git\\mm\\03_代码\\问题2_终端价值实验.py",
-      "sha256": "81e9302414435277f2ac0411c8f1bd4a8c51b747bf2ae815cbe26adbdd6b90cc"
+      "sha256": "2e57aa2be3decdae3036b27878ed8dbf2a009622da8b4e0bdbc149a7d72d601f"
     },
     "baseline_code": {
       "path": "D:\\Git\\mm\\03_代码\\问题2_求解.py",
@@ -57,5 +62,5 @@
     "scikit-learn": "1.5.1",
     "openpyxl": "3.1.5"
   },
-  "command": "python 03_代码/问题2_终端价值实验.py --start-date 2025-02-01 --days 2 --scenarios 3 --fixed-values 0,0.8 --dynamic --solver-time-limit 10 --output-dir 99_临时文件/终端价值实验_P1"
+  "command": "python 03_代码/问题2_终端价值实验.py --start-date 2025-11-01 --days 14 --scenarios 10 --fixed-values 0,0.3,0.5,0.8,1 --dynamic --solver-time-limit 10 --output-dir D:\\Git\\mm\\04_结果\\问题2_终端价值实验\\秋季_11月"
 }

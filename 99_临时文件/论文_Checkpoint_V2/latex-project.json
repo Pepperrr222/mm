@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "contest": "cumcm",
+  "main_tex": "main.tex",
+  "template": {
+    "path": "C:\\Users\\Lenovo\\.codex\\skills\\math-modeling\\tools\\latex\\assets\\templates\\cumcm",
+    "source": null,
+    "version": null,
+    "sha256": "b58d44f4941ddffe4f19a0b78684d3e6015c2f72b8d5354fe2b2b685202b6186"
+  },
+  "template_files": {
+    "main.tex": "bcdcb449176640a60ff540210aa7b7a64d6a5e77465d5d06877bdb46d44de276",
+    "references.bib": "e19b906154ccbe9f86d9f9c550cda438357622483e23ceb0d1ba8900ca768a69"
+  },
+  "resource_bindings": [
+    {
+      "source": "05_图表/raw_q1_load_pv.png",
+      "destination": "figs/raw_q1_load_pv.png",
+      "sha256": "9f76565016745d1c9903b89cd3beb663969d2ccbfb3cf6c51ede8f2897813aad",
+      "hash_mode": "content",
+      "bound_at": "2026-09-11T06:37:01.201137+00:00"
+    },
+    {
+      "source": "05_图表/raw_q1_price.png",
+      "destination": "figs/raw_q1_price.png",
+      "sha256": "de4f5939c90c7ce2e3700fbec115683e31b96128c25b84e0a91766d74badbc07",
+      "hash_mode": "content",
+      "bound_at": "2026-09-11T06:37:03.699627+00:00"
+    },
+    {
+      "source": "05_图表/process_q1_dispatch.png",
+      "destination": "figs/process_q1_dispatch.png",
+      "sha256": "975b8b9aa0d28a827af6ba4c84b210da5cef74669439ac900c65903e70606ba9",
+      "hash_mode": "content",
+      "bound_at": "2026-09-11T06:37:06.118035+00:00"
+    },
+    {
+      "source": "05_图表/process_q1_storage.png",
+      "destination": "figs/process_q1_storage.png",
+      "sha256": "d26c536b4d26ff1ba1bb529cda2d3899e961d20d037c61536db066e89f7d6ddf",
+      "hash_mode": "content",
+      "bound_at": "2026-09-11T06:37:08.614878+00:00"
+    },
+    {
+      "source": "05_图表/result_q1_cost.png",
+      "destination": "figs/result_q1_cost.png",
+      "sha256": "e060c51ab2f44c64310b2e35391bb5bb18d8c3a90e011fcdffa7f8dbdcc5aec4",
+      "hash_mode": "content",
+      "bound_at": "2026-09-11T06:37:11.267565+00:00"
+    },
+    {
+      "source": "05_图表/raw_q2_forecast_error_distribution.png",
+      "destination": "figs/raw_q2_forecast_error_distribution.png",
+      "sha256": "5caf7511fc1168b56412e2ba60e530652b12303898663e98e09dd6d78bd8bf6a",
+      "hash_mode": "content",
+      "bound_at": "2026-09-11T06:37:13.528584+00:00"
+    },
+    {
+      "source": "05_图表/process_q2_solver_modes.png",
+      "destination": "figs/process_q2_solver_modes.png",
+      "sha256": "5cb0b5a9bcfa713ed04f345322247818ae7098bf20267f389761f8e5b24d45c3",
+      "hash_mode": "content",
+      "bound_at": "2026-09-11T06:37:15.874122+00:00"
+    },
+    {
+      "source": "05_图表/process_q2_storage_state.png",
+      "destination": "figs/process_q2_storage_state.png",
+      "sha256": "d8508181f5ef60c42b983c628172c05331721149cb2b5a5467f94783443bb8e9",
+      "hash_mode": "content",
+      "bound_at": "2026-09-11T06:37:16.950027+00:00"
+    },
+    {
+      "source": "05_图表/result_q2_monthly_cost.png",
+      "destination": "figs/result_q2_monthly_cost.png",
+      "sha256": "f1c91f7a61b898ec6332c375f909976f10d39ef0b67d4a78a31a0f2f8aeddeef",
+      "hash_mode": "content",
+      "bound_at": "2026-09-11T06:37:19.391765+00:00"
+    },
+    {
+      "source": "05_图表/result_q2_specified_dates.png",
+      "destination": "figs/result_q2_specified_dates.png",
+      "sha256": "a47137e4c055b1866e76997ed1757e26eb9f0dd887ce2d045b11e341ca9215f2",
+      "hash_mode": "content",
+      "bound_at": "2026-09-11T06:37:21.963964+00:00"
+    }
+  ],
+  "created_at": "2026-09-11T06:28:39.883889+00:00"
+}
