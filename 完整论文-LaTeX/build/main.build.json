@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-11T06:47:43.091966+00:00",
+  "passed": true,
+  "main_tex": "main.tex",
+  "project_root": "D:\\Git\\mm\\完整论文-LaTeX",
+  "source_sha256": "ad1db6aaff8db5ea926c9678dded9272ee04cc5b14bee930c69d830624e853b5",
+  "compiled_source_sha256": "ad1db6aaff8db5ea926c9678dded9272ee04cc5b14bee930c69d830624e853b5",
+  "post_build_source_sha256": "ad1db6aaff8db5ea926c9678dded9272ee04cc5b14bee930c69d830624e853b5",
+  "pdf_sha256": "409b017fb2898062a4fc1429e88f38ec54b7a8641dbd903791d13cb67be55c22",
+  "project_manifest_sha256": "90647e60c2b28b762db0110b0c1c5b72455a5c860e6fc984a55a42298be679f7",
+  "engine": "xelatex",
+  "tools": {
+    "latexmk": {
+      "path": "D:\\texlive\\2024\\bin\\windows\\latexmk.EXE",
+      "version": "perl: warning: Setting locale failed."
+    },
+    "xelatex": {
+      "path": "D:\\texlive\\2024\\bin\\windows\\xelatex.EXE",
+      "version": "XeTeX 3.141592653-2.6-0.999996 (TeX Live 2024)"
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "D:\\texlive\\2024\\bin\\windows\\latexmk.EXE",
+        "-norc",
+        "-gg",
+        "-xelatex",
+        "-e",
+        "$xelatex = 'xelatex -no-shell-escape %O %S'",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "-outdir=build",
+        "main.tex"
+      ],
+      "cwd": "D:\\Git\\mm\\完整论文-LaTeX",
+      "returncode": 0,
+      "duration_seconds": 17.875
+    }
+  ],
+  "warnings": [],
+  "allowed_warnings": [],
+  "warning_override": {
+    "patterns": [],
+    "reason": null
+  },
+  "issues": [],
+  "reproduce": "D:\\Anaconda\\python.exe C:\\Users\\Lenovo\\.codex\\skills\\math-modeling\\tools\\latex\\scripts\\latex_paper.py build D:\\Git\\mm\\完整论文-LaTeX\\main.tex --engine xelatex --timeout 180 --publish D:\\Git\\mm\\完整论文.pdf"
+}
