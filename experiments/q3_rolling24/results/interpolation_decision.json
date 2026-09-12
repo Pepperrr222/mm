@@ -1,0 +1,8 @@
+{
+  "selection_period": "2025-01-02 to 2025-01-31",
+  "linear_mae": 149.34950746431326,
+  "pchip_mae": 151.33357176465563,
+  "relative_mae_improvement": -0.013284706016298387,
+  "threshold": 0.02,
+  "run_annual_pchip": false
+}

@@ -1,0 +1,2 @@
+﻿method,status,commit,cost_total,cost_plan,cost_adjust_up,cost_adjust_down,cost_emergency,energy_emergency,final_soc,elapsed_s,reason
+original_q3_baseline,unavailable_missing_code,0340916,,,,,,,,,No Q3 solver or completed result in any available branch. Report is not executable evidence.

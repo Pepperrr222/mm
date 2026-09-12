@@ -1,0 +1,7 @@
+{
+  "future_poison_test": "pass",
+  "interpolation_ramp": "pass",
+  "projection_boundaries": "pass",
+  "previous_commitment_settlement": "pass",
+  "complete_historical_paths": "pass"
+}

@@ -1,0 +1,50 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { FileBlob, SpreadsheetFile } from '@oai/artifact-tool';
+const here=import.meta.dirname, root=path.resolve(here,'../..'),out=path.join(here,'results');
+const data=JSON.parse(await fs.readFile(path.join(out,'workbook_data.json'),'utf8'));
+const workbook=await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(root,'01_题目与数据/原始附件/附件5/result3.xlsx')));
+const typed=rows=>rows.map(row=>row.map((v,i)=>i===0&&v?new Date(v+'T00:00:00Z'):v));
+for (const [name,rows] of [['计划购电量',data.plan],['调整购电量',data.final]]) {
+  const s=workbook.worksheets.getItem(name);
+  s.getRange('A1:EQ1').values=[data.headers];
+  s.getRange('A2:EQ335').values=typed(rows);
+  s.getRange('A2:A335').setNumberFormat('yyyy-mm-dd');
+  s.getRange('B2:EQ335').setNumberFormat('#,##0.000000');
+  s.getRange('A1:EQ335').format.columnWidth=14;
+  s.getRange('EP1:EQ335').format.columnWidth=21;
+  s.getRange('A1:EQ1').format.rowHeight=25;
+  s.freezePanes.freezeRows(1);
+  s.freezePanes.freezeColumns(1);
+  s.getRange('EP2').formulas=[['=SUM(B2:EO2)']];
+  s.getRange('EP2:EP335').fillDown();
+}
+const storage=workbook.worksheets.getItem('充放电量');
+storage.getRange('A2:F2005').clear({applyTo:'contents'});
+storage.getRange('A2:F2005').values=typed(data.storage);
+storage.getRange('A2:A2005').setNumberFormat('yyyy-mm-dd');
+storage.getRange('C2:D2005').setNumberFormat('#,##0.000000');
+storage.getRange('F2:F2005').setNumberFormat('#,##0.000000');
+storage.getRange('A1:F2005').format.columnWidth=18;
+storage.getRange('A1:F2005').format.rowHeight=21;
+storage.freezePanes.freezeRows(1);
+const emergency=workbook.worksheets.getItem('紧急购电量');
+emergency.getUsedRange().clear({applyTo:'contents'});
+emergency.getRange('A1:C1').values=[['日期','紧急时段','购电量']];
+emergency.getRangeByIndexes(1,0,data.emergency.length,3).values=typed(data.emergency);
+emergency.getRangeByIndexes(1,0,data.emergency.length,1).setNumberFormat('yyyy-mm-dd');
+emergency.getRangeByIndexes(1,2,data.emergency.length,1).setNumberFormat('#,##0.000000');
+emergency.getRangeByIndexes(0,0,data.emergency.length+1,3).format.columnWidth=21;
+emergency.getRangeByIndexes(0,0,data.emergency.length+1,3).format.rowHeight=21;
+emergency.freezePanes.freezeRows(1);
+workbook.recalculate();
+console.log((await workbook.inspect({kind:'table',range:'计划购电量!A1:D3',include:'values,formulas',tableMaxRows:3,tableMaxCols:4,maxChars:1200})).ndjson);
+console.log((await workbook.inspect({kind:'match',searchTerm:'#REF!|#DIV/0!|#VALUE!|#NAME\\?|#NUM!',options:{useRegex:true,maxResults:20},maxChars:1000})).ndjson);
+for (const [name,range,file] of [['计划购电量','A1:F6','plan'],['调整购电量','A1:F6','final'],['充放电量','A1:F8','storage'],['紧急购电量','A1:C9','emergency'],['计划购电量','EN1:EQ6','totals']]) {
+  const preview=await workbook.render({sheetName:name,range,scale:1.5});
+  await fs.writeFile(path.join(out,'preview_'+file+'.png'),new Uint8Array(await preview.arrayBuffer()));
+}
+const output=await SpreadsheetFile.exportXlsx(workbook);
+const destination=path.join(out,'result3_问题3_结果.xlsx');
+await output.save(destination);
+console.log('Saved '+destination);

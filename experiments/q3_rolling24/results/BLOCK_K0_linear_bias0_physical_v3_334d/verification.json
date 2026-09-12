@@ -1,0 +1,8 @@
+{
+  "interval_recompute": 15037480.854127519,
+  "order_recompute": 15037480.854127519,
+  "reported": 15037480.854127519,
+  "balance_max": 4.547473508864641e-13,
+  "soc_min": 1200.0,
+  "soc_max": 10800.0
+}
