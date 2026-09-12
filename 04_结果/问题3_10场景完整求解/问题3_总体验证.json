@@ -1,0 +1,30 @@
+{
+  "rows_detail": 96192,
+  "rows_daily": 668,
+  "rows_updates": 2672,
+  "expected_detail": 96192,
+  "max_actual_balance_residual_kwh": 2.2737367544323206e-13,
+  "max_actual_state_residual_kwh": 9.094947017729282e-13,
+  "max_update_plan_state_residual_kwh": 8.196457201847807e-08,
+  "max_update_scenario_balance_residual_kwh": 1.1600004334866298e-07,
+  "max_update_terminal_residual_kwh": 1.709850039333105e-10,
+  "max_solver_mip_gap": 9.994308992541057e-07,
+  "plan_simultaneous_charge_discharge": 0,
+  "plan_simultaneous_emergency_charge": 8,
+  "plan_simultaneous_emergency_surplus": 2,
+  "paired_solve_mode_equal": true,
+  "paired_scenario_count_equal": true,
+  "max_adjustment_identity_residual_kwh": 1.524540493846871e-09,
+  "max_charge_exec_kwh": 833.3333333333333,
+  "max_discharge_exec_kwh": 833.3333333333333,
+  "actual_simultaneous_emergency_charge": 0,
+  "storage_min_kwh": 1273.284160131076,
+  "storage_max_kwh": 10800.0,
+  "h24_minus_h48_total_yuan": 105352.66305041994,
+  "paired_mean_ci95_yuan_per_day": [
+    258.8716396775379,
+    371.89373441789144
+  ],
+  "fallback_events": [],
+  "passed": false
+}

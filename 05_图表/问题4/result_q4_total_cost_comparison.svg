@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="353.99952pt" height="238.79952pt" viewBox="0 0 353.99952 238.79952" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-12T19:18:26.046224</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 238.79952 
+L 353.99952 238.79952 
+L 353.99952 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 39.535781 217.263739 
+L 346.79952 217.263739 
+L 346.79952 7.2 
+L 39.535781 7.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m510d819daa" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m510d819daa" x="110.033522" y="217.263739" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="110.033522" y="229.859364" transform="rotate(-0 110.033522 229.859364)">每日0:00决策</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m510d819daa" x="276.301779" y="217.263739" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="276.301779" y="229.859364" transform="rotate(-0 276.301779 229.859364)">每6小时再调度</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="mafd9da4120" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mafd9da4120" x="39.535781" y="197.257668" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="32.535781" y="200.055481" transform="rotate(-0 32.535781 200.055481)">15.8</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mafd9da4120" x="39.535781" y="157.245528" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="32.535781" y="160.04334" transform="rotate(-0 32.535781 160.04334)">16.0</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mafd9da4120" x="39.535781" y="117.233387" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="32.535781" y="120.031199" transform="rotate(-0 32.535781 120.031199)">16.2</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mafd9da4120" x="39.535781" y="77.221246" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="32.535781" y="80.019059" transform="rotate(-0 32.535781 80.019059)">16.4</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#mafd9da4120" x="39.535781" y="37.209106" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end" x="32.535781" y="40.006918" transform="rotate(-0 32.535781 40.006918)">16.6</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="12.795625" y="112.231869" transform="rotate(-90 12.795625 112.231869)">全年总费用/百万元</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 53.502315 3358.216785 
+L 110.033522 3358.216785 
+L 110.033522 47.611537 
+L 53.502315 47.611537 
+z
+" clip-path="url(#p73b0a2e49a)" style="fill: #4c78a8"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 219.770572 3358.216785 
+L 276.301779 3358.216785 
+L 276.301779 108.135074 
+L 219.770572 108.135074 
+z
+" clip-path="url(#p73b0a2e49a)" style="fill: #4c78a8"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 110.033522 3358.216785 
+L 166.56473 3358.216785 
+L 166.56473 89.600667 
+L 110.033522 89.600667 
+z
+" clip-path="url(#p73b0a2e49a)" style="fill: #e07b39"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 276.301779 3358.216785 
+L 332.832986 3358.216785 
+L 332.832986 141.200962 
+L 276.301779 141.200962 
+z
+" clip-path="url(#p73b0a2e49a)" style="fill: #e07b39"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 39.535781 217.263739 
+L 39.535781 7.2 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 39.535781 217.263739 
+L 346.79952 217.263739 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_9">
+    <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="81.767919" y="40.869863" transform="rotate(-0 81.767919 40.869863)">16.548</text>
+   </g>
+   <g id="text_10">
+    <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="248.036175" y="101.3934" transform="rotate(-0 248.036175 101.3934)">16.245</text>
+   </g>
+   <g id="text_11">
+    <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="138.299126" y="82.858993" transform="rotate(-0 138.299126 82.858993)">16.338</text>
+   </g>
+   <g id="text_12">
+    <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle" x="304.567383" y="134.459288" transform="rotate(-0 304.567383 134.459288)">16.080</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_9">
+     <path d="M 260.05202 19.095625 
+L 274.05202 19.095625 
+L 274.05202 14.195625 
+L 260.05202 14.195625 
+z
+" style="fill: #4c78a8"/>
+    </g>
+    <g id="text_13">
+     <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start" x="279.65202" y="19.095625" transform="rotate(-0 279.65202 19.095625)">H24</text>
+    </g>
+    <g id="patch_10">
+     <path d="M 307.27577 19.095625 
+L 321.27577 19.095625 
+L 321.27577 14.195625 
+L 307.27577 14.195625 
+z
+" style="fill: #e07b39"/>
+    </g>
+    <g id="text_14">
+     <text style="font: 7px 'Microsoft YaHei', 'SimHei', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start" x="326.87577" y="19.095625" transform="rotate(-0 326.87577 19.095625)">H48</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p73b0a2e49a">
+   <rect x="39.535781" y="7.2" width="307.263739" height="210.063739"/>
+  </clipPath>
+ </defs>
+</svg>

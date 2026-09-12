@@ -1,0 +1,47 @@
+{
+  "single_entry": "python 03_代码/问题3_完整复现.py",
+  "published_run": {
+    "scenarios_requested": 10,
+    "solver_time_limit_s": 120.0,
+    "skip_solve": true,
+    "note": "正式全年结果采用10条历史整段残差情景和120秒单次时限；无回退。自动验证中的少量计划层逻辑容差记录已在论文中披露。"
+  },
+  "validation_passed": false,
+  "validation_note": "数值平衡与实际执行约束通过；计划层存在少量MILP容差记录，故严格总标志为false。",
+  "runtime_s_this_entry": 5.09940590000042,
+  "python": "3.12.8",
+  "scripts": {
+    "03_代码\\problem3_full_30scenario.py": "a700b492994de51f422804817e3cd794d1270fbc50f656e2f9793480966ca1fd",
+    "03_代码\\problem3_workbook.py": "6ed1613ecaa11998eba8c31ca30096d28af21cc7d4c8c3c8e9ce35b36aae7c48",
+    "03_代码\\problem3_figures.py": "96a9e284537e95216b57493f409d3208fdecb2144043fdcc16c5436962a44492",
+    "03_代码\\问题3_完整复现.py": "d29f5b37346cf432dc00fcf82e11fff585333236c1764af8de6e882617a5718e"
+  },
+  "artifacts": {
+    "04_结果\\问题3_10场景完整求解\\问题3_两方案汇总.csv": "7dbf8ebc608933916e78a673b3a1617e07c5da3ebd07f18f89b80d889df26f41",
+    "04_结果\\问题3_10场景完整求解\\问题3_总体验证.json": "005d0f2160cba3b89c7c3eeb80e1c7471725f64b93a75957c1f4b9a4d83ecf53",
+    "04_结果\\问题3_10场景完整求解\\问题3_指定日期结果.csv": "a96de88e32ccb90edde335975712e620cc7b893bb0f02e9dc37aff06ff2a7081",
+    "04_结果\\问题3_10场景完整求解\\问题3_更新级验证.csv": "7a46b28acbefad978b5bcc3117e097539ebe5b2bc92386460a339914d6a74f07",
+    "04_结果\\问题3_10场景完整求解\\问题3_每日指标.csv": "b998ed3a6f9212aee5ad0da3e37cedb6cf561de0bd35b7f86ff906319358bda4",
+    "04_结果\\问题3_10场景完整求解\\问题3_每日配对差.csv": "efee5236724588e3e5525846f4c6630c15ee48c3bff4df0c65e891d2165cabf7",
+    "04_结果\\问题3_10场景完整求解\\问题3_逐时段结果.csv": "97ae573de2bbd2f64dedfa4d0b9b9e7bbfb81283d3ff62ad1eb49cef4faf95d7",
+    "04_结果\\result3_问题3_结果.xlsx": "ea082d4acaa0ee032482a8305d486ed3d4a3bc78e9843d4179d28feec591f956",
+    "05_图表\\问题3\\process_q3_adjustment_epochs.png": "dc38e0cc819ddcd6887be94a89e60f0df6012430d1c38fd4f7f8a740650cd9ac",
+    "05_图表\\问题3\\process_q3_adjustment_epochs.svg": "439c55db1c83ce15d02a392420af5cf87e99b8265a6167286c8887a1321c798c",
+    "05_图表\\问题3\\process_q3_solver_time.png": "edeaa70bca1f289ad5e6de12d468e3a3a0280f358df275f2286bfd550977c662",
+    "05_图表\\问题3\\process_q3_solver_time.svg": "4dd939b7b0bca1cf885dc911bc729978cb32ebe188dad54b56ae59dd6625f5f4",
+    "05_图表\\问题3\\process_q3_storage_specified.png": "31f30840cd8bcdc2d6fc96919684a76e6f402ebef844667e74810d7ea255bf04",
+    "05_图表\\问题3\\process_q3_storage_specified.svg": "01d87432ed93c4b97d27bae8e534e15d99a621972ffa718f3706cbaf5ccc33e0",
+    "05_图表\\问题3\\raw_q3_emergency_distribution.png": "5be1d2a7eea76298c2e6b5ec53cef1382f2ad44dded81fb3ac03772c220714d8",
+    "05_图表\\问题3\\raw_q3_emergency_distribution.svg": "70e193d1b623cd34782d5321aa7a79147dddd123d5bf3650bc72a1955ddc357d",
+    "05_图表\\问题3\\raw_q3_load_pv_day.png": "6a25b0022606967fbbff001470a9eb1dc6e0efa0368af98344943cde9aec13ec",
+    "05_图表\\问题3\\raw_q3_load_pv_day.svg": "f52cbcc1189babb5bc99f8b9e1878bc490b99e19a4382d28cddcc934a979aee9",
+    "05_图表\\问题3\\raw_q3_monthly_energy.png": "93b8a4cc6101ed12a1df0a27822c7a526850373b4756b635b330a74695e95bf3",
+    "05_图表\\问题3\\raw_q3_monthly_energy.svg": "e136905ee5eb82ccecc20a1ae004cecf26961226891f4752ed75d1f9aad38cf1",
+    "05_图表\\问题3\\result_q3_cost_components.png": "3f2a6ed1576101c4e82be1de8e67957aa64e7488b14a3622fb80c1f5adf16b9b",
+    "05_图表\\问题3\\result_q3_cost_components.svg": "4fed6a04acdbd854c27d055a02a93eba0ca6c982f6beb683546418a346b0b5f2",
+    "05_图表\\问题3\\result_q3_cumulative_cost_difference.png": "9a7dad7041322303f0fee288090ac9214735b18ee61da19f21060beab000ae8f",
+    "05_图表\\问题3\\result_q3_cumulative_cost_difference.svg": "3a09ca495dc43afd3744ccb3ff31966fdec6832d561af07e8ff0cc9718bae7b4",
+    "05_图表\\问题3\\result_q3_daily_difference_distribution.png": "8d4fa3a054aab9647cd4e29278abc0fff206d15f9632701c9d3b89fa89bd2029",
+    "05_图表\\问题3\\result_q3_daily_difference_distribution.svg": "49b3731b0c8f09e898bcd806df24e81fa5224a83cb1eba764b833e59f5b0df68"
+  }
+}

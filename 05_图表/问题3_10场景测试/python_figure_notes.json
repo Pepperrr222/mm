@@ -1,0 +1,11 @@
+{
+  "claim": "Across the 10-scenario rolling experiment, H48 has lower cumulative cost than H24 while maintaining a distinct storage trajectory.",
+  "data": [
+    "问题3_每日指标.csv",
+    "问题3_每日配对差.csv",
+    "问题3_逐时段结果.csv"
+  ],
+  "uncertainty": "No replicate-level uncertainty is plotted; the paired daily difference is shown directly and the previously computed block-bootstrap interval is reported in the result JSON.",
+  "representative_day": "2025-06-21",
+  "backend": "Python/matplotlib"
+}

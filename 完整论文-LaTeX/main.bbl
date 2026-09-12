@@ -1,0 +1,33 @@
+\begin{thebibliography}{1}
+
+\bibitem{friedman2001greedy}
+Jerome~H. Friedman.
+\newblock Greedy function approximation: A gradient boosting machine.
+\newblock {\em The Annals of Statistics}, 29(5), 2001.
+
+\bibitem{huangfu2017parallelizing}
+Q.~Huangfu and J.~A.~J. Hall.
+\newblock Parallelizing the dual revised simplex method.
+\newblock {\em Mathematical Programming Computation}, 10(1):119--142, 2017.
+
+\bibitem{liang2014stochastic}
+Hao Liang and Weihua Zhuang.
+\newblock Stochastic modeling and optimization in a microgrid: A survey.
+\newblock {\em Energies}, 7(4):2027--2050, 2014.
+
+\bibitem{liu2016bidding}
+Guodong Liu, Yan Xu, and Kevin Tomsovic.
+\newblock Bidding strategy for microgrid in day-ahead market based on hybrid stochastic/robust optimization.
+\newblock {\em IEEE Transactions on Smart Grid}, 7(1):227--237, 2016.
+
+\bibitem{mellit2021deep}
+A.~Mellit, A.~Massi Pavan, and V.~Lughi.
+\newblock Deep learning neural networks for short-term photovoltaic power forecasting.
+\newblock {\em Renewable Energy}, 172:276--288, 2021.
+
+\bibitem{nespoli2019dayahead}
+Alfredo Nespoli, Emanuele Ogliari, Sonia Leva, Alessandro~Massi Pavan, Adel Mellit, Vanni Lughi, and Alberto Dolara.
+\newblock Day-ahead photovoltaic forecasting: A comparison of the most effective techniques.
+\newblock {\em Energies}, 12(9):1621, 2019.
+
+\end{thebibliography}

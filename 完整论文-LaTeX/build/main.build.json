@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "created_at": "2026-09-11T11:17:56.982916+00:00",
+  "created_at": "2026-09-12T11:26:12.851303+00:00",
   "passed": true,
   "main_tex": "main.tex",
   "project_root": "D:\\Git\\mm\\完整论文-LaTeX",
-  "source_sha256": "3b0c59dce354524650ed491f99b6a4de434c02b3d045f17e59d80d16ab37b6fa",
-  "compiled_source_sha256": "3b0c59dce354524650ed491f99b6a4de434c02b3d045f17e59d80d16ab37b6fa",
-  "post_build_source_sha256": "3b0c59dce354524650ed491f99b6a4de434c02b3d045f17e59d80d16ab37b6fa",
-  "pdf_sha256": "250017e1749f5342fca5e168d694cdaf45ffd9ce0a97b1355fe73a10e70da839",
-  "project_manifest_sha256": "90647e60c2b28b762db0110b0c1c5b72455a5c860e6fc984a55a42298be679f7",
+  "source_sha256": "fd59a45f63523628282f472a0d46add5eeac2e96c8775f3804069d37667a5e8c",
+  "compiled_source_sha256": "fd59a45f63523628282f472a0d46add5eeac2e96c8775f3804069d37667a5e8c",
+  "post_build_source_sha256": "fd59a45f63523628282f472a0d46add5eeac2e96c8775f3804069d37667a5e8c",
+  "pdf_sha256": "cab029a7dc3699d0115fbd5a48ebb9e0e7d8e97ad663dea5cc926f9a38538ff5",
+  "project_manifest_sha256": "5a4cdd4a6c3dbe3facfbefbb7605a9c5743b691114db811217d60dcca3366fa8",
   "engine": "xelatex",
   "tools": {
     "latexmk": {
@@ -37,7 +37,7 @@
       ],
       "cwd": "D:\\Git\\mm\\完整论文-LaTeX",
       "returncode": 0,
-      "duration_seconds": 16.454
+      "duration_seconds": 13.031
     }
   ],
   "warnings": [],
@@ -47,5 +47,5 @@
     "reason": null
   },
   "issues": [],
-  "reproduce": "D:\\Anaconda\\python.exe C:\\Users\\Lenovo\\.codex\\skills\\math-modeling\\tools\\latex\\scripts\\latex_paper.py build D:\\Git\\mm\\完整论文-LaTeX\\main.tex --engine xelatex --timeout 180 --publish D:\\Git\\mm\\完整论文.pdf"
+  "reproduce": "D:\\Anaconda\\python.exe C:\\Users\\Lenovo\\.codex\\skills\\math-modeling\\tools\\latex\\scripts\\latex_paper.py build D:\\Git\\mm\\完整论文-LaTeX\\main.tex --engine xelatex --timeout 180 --publish D:\\Git\\mm\\完整论文.pdf --overwrite"
 }

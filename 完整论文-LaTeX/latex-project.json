@@ -82,6 +82,41 @@
       "sha256": "a47137e4c055b1866e76997ed1757e26eb9f0dd887ce2d045b11e341ca9215f2",
       "hash_mode": "content",
       "bound_at": "2026-09-11T06:37:21.963964+00:00"
+    },
+    {
+      "source": "05_图表/问题4/result_q4_total_cost_comparison.png",
+      "destination": "figs/result_q4_total_cost_comparison.png",
+      "sha256": "f0a7341df1dabf90a2afc5894219483ebaaf8f5e3be542a9e8780521261810c9",
+      "hash_mode": "content",
+      "bound_at": "2026-09-12T11:18:53.317129+00:00"
+    },
+    {
+      "source": "05_图表/问题3/process_q3_adjustment_epochs.png",
+      "destination": "figs/process_q3_adjustment_epochs.png",
+      "sha256": "dc38e0cc819ddcd6887be94a89e60f0df6012430d1c38fd4f7f8a740650cd9ac",
+      "hash_mode": "content",
+      "bound_at": "2026-09-12T11:25:34.805484+00:00"
+    },
+    {
+      "source": "05_图表/问题3/process_q3_storage_specified.png",
+      "destination": "figs/process_q3_storage_specified.png",
+      "sha256": "31f30840cd8bcdc2d6fc96919684a76e6f402ebef844667e74810d7ea255bf04",
+      "hash_mode": "content",
+      "bound_at": "2026-09-12T11:25:34.913920+00:00"
+    },
+    {
+      "source": "05_图表/问题3/result_q3_cost_components.png",
+      "destination": "figs/result_q3_cost_components.png",
+      "sha256": "3f2a6ed1576101c4e82be1de8e67957aa64e7488b14a3622fb80c1f5adf16b9b",
+      "hash_mode": "content",
+      "bound_at": "2026-09-12T11:25:35.026549+00:00"
+    },
+    {
+      "source": "05_图表/问题3/result_q3_cumulative_cost_difference.png",
+      "destination": "figs/result_q3_cumulative_cost_difference.png",
+      "sha256": "9a7dad7041322303f0fee288090ac9214735b18ee61da19f21060beab000ae8f",
+      "hash_mode": "content",
+      "bound_at": "2026-09-12T11:25:35.134725+00:00"
     }
   ],
   "created_at": "2026-09-11T06:28:39.883889+00:00"

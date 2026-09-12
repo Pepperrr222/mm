@@ -1,0 +1,44 @@
+{
+  "command": "python 03_代码/problem4_q42.py --start-day 31 --end-day 364 --scenarios 10 --solver-time-limit 60.0 --output-dir 04_结果\\问题4_2_完整求解",
+  "scenario_seed": 20260911,
+  "bootstrap_seed": 20260912,
+  "bootstrap": {
+    "type": "circular_moving_block",
+    "block_days": 7,
+    "repetitions": 5000
+  },
+  "parameters": {
+    "horizons_h": [
+      24,
+      48
+    ],
+    "execute_h": 24,
+    "scenarios": 10,
+    "eta_charge": 0.9,
+    "eta_discharge": 0.9,
+    "storage_bounds_kwh": [
+      1200.0,
+      10800.0
+    ]
+  },
+  "inputs": {
+    "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+    "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件2.xlsx": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72",
+    "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件3.xlsx": "8a61b06c52bd0d639a1cc37c61a7d9f5b75edcbca718f64c1bd3498ec9f9d843",
+    "D:\\Git\\mm\\01_题目与数据\\原始附件\\附件4.xlsx": "20e9c93aeab5e8e21ae4dd15587f9e190f7408692504c1319598461cd654fe71",
+    "D:\\Git\\mm\\03_代码\\问题2_求解.py": "7b2b297f1e1cfe9160778d43484af9c6fc88952016dc6edf6a1e636a415742f6"
+  },
+  "script_sha256": "aae8e5ab9f223952abd24b37138c6309d7ffceb03613936673ee1406294d4c57",
+  "runtime_s": 1.166647699999885,
+  "python": "3.12.8",
+  "fallback_events": [],
+  "outputs": {
+    "问题4_2_两方案汇总.csv": "389a6f09010e902fe0d7816c50f14440c1f458cc9a6f3a885aa4bfe6f3c56509",
+    "问题4_2_总体验证.json": "7f912297b9dd710ad83a8c2d9d2d66f663dd239f2ae4fea2ae21a3d8b7d7615a",
+    "问题4_2_指定日期结果.csv": "3137709cad2b222ff326e939bb7fe63e4fda7877e3450dc961deaebfda769962",
+    "问题4_2_更新级验证.csv": "4493a7af6ebd3b722d1abd96fb37bb3fe73c271874637fbb73ad174bfea91a3c",
+    "问题4_2_每日指标.csv": "264a511b0066f0c78ed4d601d2888874c4c62016193fa2cce153ed90dc09c4fd",
+    "问题4_2_每日配对差.csv": "a41552d1a5fc8e3b218e0bfc65e3e63dfdf5a8dc7b2db2df189d902536ac1b64",
+    "问题4_2_逐时段结果.csv": "0cd16b9d9fa49d748fb5e5aa492cddff7563ddf8c2e3cf982bbd861ffdd3721e"
+  }
+}

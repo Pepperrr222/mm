@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.20)  11 SEP 2026 19:17
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.20)  12 SEP 2026 19:26
 entering extended mode
  file:line:error style messages enabled.
  %&-line parsing enabled.
@@ -732,33 +732,50 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-] [2]
+] [2] [3] [4]
 File: figs/raw_q1_load_pv.png Graphic file (type bmp)
 <figs/raw_q1_load_pv.png>
- [3] [4]
-File: figs/process_q1_dispatch.png Graphic file (type bmp)
-<figs/process_q1_dispatch.png>
-File: figs/process_q1_storage.png Graphic file (type bmp)
-<figs/process_q1_storage.png>
 
 [5]
+File: figs/process_q1_dispatch.png Graphic file (type bmp)
+<figs/process_q1_dispatch.png>
+ [6]
+File: figs/process_q1_storage.png Graphic file (type bmp)
+<figs/process_q1_storage.png>
+ [7]
 File: figs/result_q1_cost.png Graphic file (type bmp)
 <figs/result_q1_cost.png>
- [6]
+ [8]
 File: figs/raw_q2_forecast_error_distribution.png Graphic file (type bmp)
 <figs/raw_q2_forecast_error_distribution.png>
- [7] [8] [9]
+ [9] [10]
 File: figs/process_q2_solver_modes.png Graphic file (type bmp)
 <figs/process_q2_solver_modes.png>
- [10]
+ [11]
 File: figs/process_q2_storage_state.png Graphic file (type bmp)
 <figs/process_q2_storage_state.png>
+ [12]
 File: figs/result_q2_monthly_cost.png Graphic file (type bmp)
 <figs/result_q2_monthly_cost.png>
- [11]
+ [13]
 File: figs/result_q2_specified_dates.png Graphic file (type bmp)
 <figs/result_q2_specified_dates.png>
- [12] [13] [14] [15] (build/main.bbl [16])
+ [14] [15]
+File: figs/process_q3_adjustment_epochs.png Graphic file (type bmp)
+<figs/process_q3_adjustment_epochs.png>
+ [16] [17]
+File: figs/result_q3_cost_components.png Graphic file (type bmp)
+<figs/result_q3_cost_components.png>
+ [18]
+File: figs/result_q3_cumulative_cost_difference.png Graphic file (type bmp)
+<figs/result_q3_cumulative_cost_difference.png>
+File: figs/process_q3_storage_specified.png Graphic file (type bmp)
+<figs/process_q3_storage_specified.png>
+ [19] [20]
+[21]
+File: figs/result_q4_total_cost_comparison.png Graphic file (type bmp)
+<figs/result_q4_total_cost_comparison.png>
+ [22] [23] [24] [25] (./main.bbl) [26]
 
 Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
 (fontspec)             doesn't exist).
@@ -782,22 +799,21 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             <->"FangSong/OT:script=hani;language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
-
-[17] (build/main.aux)
+ [27] (build/main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: FAD3E634224F30DDEDD7F089F5DDF34E;3540.
+(rerunfilecheck)             Checksum: B64A4DFD7FD979854E717739ADE6B3E8;4937.
  ) 
 Here is how much of TeX's memory you used:
- 18803 strings out of 474773
- 406872 string characters out of 5761289
- 1945842 words of memory out of 5000000
- 40665 multiletter control sequences out of 15000+600000
+ 18913 strings out of 474773
+ 412209 string characters out of 5761289
+ 1954842 words of memory out of 5000000
+ 40770 multiletter control sequences out of 15000+600000
  575621 words of font info for 134 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,12n,97p,472b,494s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,13n,97p,472b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on build/main.xdv (17 pages, 183948 bytes).
+Output written on build/main.xdv (27 pages, 297568 bytes).

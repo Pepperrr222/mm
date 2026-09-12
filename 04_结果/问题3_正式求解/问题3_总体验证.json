@@ -1,0 +1,33 @@
+{
+  "rows_detail": 96192,
+  "rows_daily": 668,
+  "rows_updates": 2672,
+  "expected_detail": 96192,
+  "max_actual_balance_residual_kwh": 2.2737367544323206e-13,
+  "max_actual_state_residual_kwh": 9.094947017729282e-13,
+  "max_update_plan_state_residual_kwh": 7.605649443576112e-11,
+  "max_update_scenario_balance_residual_kwh": 1.9042545318370685e-11,
+  "max_update_terminal_residual_kwh": 1.8189894035458565e-12,
+  "max_solver_mip_gap": 8.987330100313135e-07,
+  "plan_simultaneous_charge_discharge": 0,
+  "plan_simultaneous_emergency_charge": 0,
+  "plan_simultaneous_emergency_surplus": 0,
+  "paired_solve_mode_equal": true,
+  "paired_scenario_count_equal": true,
+  "max_adjustment_identity_residual_kwh": 1.1368683772161603e-12,
+  "max_charge_exec_kwh": 833.3333333333333,
+  "max_discharge_exec_kwh": 833.3333333333333,
+  "actual_simultaneous_emergency_charge": 0,
+  "storage_min_kwh": 1214.7204145774517,
+  "storage_max_kwh": 10800.0,
+  "h24_minus_h48_total_yuan": 100735.47237981891,
+  "paired_mean_ci95_yuan_per_day": [
+    267.93866640269187,
+    333.1213291757581
+  ],
+  "fallback_events": [
+    "main:policy=H24,date=2025-02-01,issue_slot=0: HiGHS失败 status=1: Time limit reached. (HiGHS Status 13: Time limit reached)",
+    "fallback_10:policy=H24,date=2025-02-01,issue_slot=0: HiGHS失败 status=1: Time limit reached. (HiGHS Status 13: Time limit reached)"
+  ],
+  "passed": true
+}
