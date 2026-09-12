@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "days": 334,
+  "detail_rows": 48096,
+  "max_balance_residual_kwh": 4.547473508864641e-13,
+  "max_state_residual_kwh": 9.094947017729282e-13,
+  "storage_min_kwh": 1200.0,
+  "storage_max_kwh": 10800.0,
+  "max_charge_kwh_per_slot": 833.3333333333334,
+  "max_discharge_kwh_per_slot": 833.3333333333334,
+  "simultaneous_charge_discharge": 0,
+  "simultaneous_emergency_charge": 0,
+  "simultaneous_emergency_waste": 0,
+  "max_cross_day_soc_residual_kwh": 0.0,
+  "max_cost_recalculation_residual_yuan": 2.9103830456733704e-11,
+  "total_cost_yuan": 13790040.896640662,
+  "emergency_cost_yuan": 81492.28566929969,
+  "xlsx_sheet_count": 4,
+  "xlsx_expected_sheet_count": 4,
+  "xlsx_structure_ok": true
+}
